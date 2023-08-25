@@ -178,6 +178,34 @@ local plugins = {
       },
     },
   },
+  {
+    "dnlhc/glance.nvim",
+    cmd = "Glance",
+    config = function()
+      local glance = require "glance"
+      local actions = glance.actions
+      glance.setup {
+        height = 25,
+        border = {
+          enable = true,
+          top_char = "▔",
+          bottom_char = "▁",
+        },
+        theme = { enable = true, mode = "auto" },
+        mappings = {
+          list = {
+            ["<C-v>"] = actions.jump_vsplit,
+            ["<C-x>"] = actions.jump_split,
+            ["<C-t>"] = actions.jump_tab,
+          },
+        },
+      }
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = "BufRead",
+  },
 }
 
 return plugins
