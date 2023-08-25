@@ -1,10 +1,9 @@
----@type ChadrcConfig 
+---@type ChadrcConfig
 local M = {}
 
 M.ui = {
   theme = "catppuccin",
   transparency = false,
-  lsp_semantic_tokens = true,
 
   cmp = {
     icons = true,
@@ -61,5 +60,5 @@ M.ui = {
   },
 }
 
-M.plugins = 'custom.plugins'
+M.plugins = "custom.plugins"
 return M
