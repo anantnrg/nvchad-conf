@@ -26,6 +26,13 @@ local plugins = {
     end,
   },
   {
+    "rust-lang/rust.vim",
+    ft = "rust",
+    init = function()
+      vim.g.rustfmt_autosave = 1
+    end,
+  },
+  {
     "elentok/format-on-save.nvim",
     lazy = true,
     cmd = { "Format" },
@@ -39,7 +46,7 @@ local plugins = {
         formatter_by_ft = {
           json = formatters.lsp,
           lua = formatters.stylua,
-          rust = formatters.lsp,
+          -- rust = formatters.lsp,
           sh = formatters.shfmt,
           toml = formatters.lsp,
           yaml = formatters.lsp,
@@ -107,9 +114,15 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    config = function()
-      require("telescope").load_extension "persisted"
-    end,
+    dependencies = "olimorris/persisted.nvim",
+    opts = {
+      extensions_list = { "themes", "terms", "persisted" },
+      extensions = {
+        persisted = {
+          prompt_title = "Session Manager",
+        },
+      },
+    },
   },
   {
     "folke/noice.nvim",
